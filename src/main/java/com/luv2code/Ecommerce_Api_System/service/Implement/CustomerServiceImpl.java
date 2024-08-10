@@ -13,6 +13,9 @@ import com.luv2code.Ecommerce_Api_System.repository.AddressRepository;
 import com.luv2code.Ecommerce_Api_System.repository.CustomerRepository;
 import com.luv2code.Ecommerce_Api_System.service.CustomerService;
 import jakarta.transaction.Transactional;
+import lombok.AccessLevel;
+import lombok.RequiredArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,16 +23,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CustomerServiceImpl implements CustomerService {
 
-    @Autowired
-    private CustomerRepository customerRepository;
+    CustomerRepository customerRepository;
 
-    @Autowired
-    private CustomerMapper customerMapper;
+    CustomerMapper customerMapper;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    PasswordEncoder passwordEncoder;
 
     @Transactional
     @Override

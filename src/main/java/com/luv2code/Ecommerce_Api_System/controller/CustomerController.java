@@ -7,6 +7,9 @@ import com.luv2code.Ecommerce_Api_System.dto.response.CustomerUpdateResponse;
 import com.luv2code.Ecommerce_Api_System.entity.Address;
 import com.luv2code.Ecommerce_Api_System.service.CustomerService;
 import jakarta.validation.Valid;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.experimental.FieldDefaults;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,11 +17,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/customers")
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@AllArgsConstructor
+@RequestMapping("/api/v1/customers")
 public class CustomerController {
 
-    @Autowired
-    private CustomerService customerService;
+    CustomerService customerService;
 
     @PostMapping
     public ResponseEntity<CustomerCreationResponse> createCustomer(@Valid @RequestBody CustomerCreationRequest request){
@@ -40,7 +44,7 @@ public class CustomerController {
 
     @PutMapping("/{customerId}")
     public ResponseEntity<CustomerUpdateResponse> updateCustomer(@PathVariable String customerId
-                                        ,@RequestBody CustomerUpdateRequest request){
+                                        ,@Valid @RequestBody CustomerUpdateRequest request){
         return ResponseEntity.ok()
                 .body(customerService.updateCustomer(customerId, request));
     }

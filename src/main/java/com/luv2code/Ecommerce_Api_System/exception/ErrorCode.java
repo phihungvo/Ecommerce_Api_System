@@ -14,7 +14,9 @@ public enum ErrorCode {
     UNCATEGORIZED(9999, "Uncategorized", HttpStatus.INTERNAL_SERVER_ERROR),
     USER_EXISTED(1000, "User existed", HttpStatus.BAD_REQUEST),
     USER_NOT_EXISTED(1001, "User not existed", HttpStatus.NOT_FOUND),
-    INVALID_VALUE(1002, "", HttpStatus.BAD_REQUEST)
+    INVALID_VALUE(1002, "", HttpStatus.BAD_REQUEST),
+    PRODUCT_NOT_FOUND(1003, "Product not found", HttpStatus.NOT_FOUND),
+    PRODUCT_EXISTED(1004, "Product existed", HttpStatus.BAD_REQUEST)
     ;
 
 
