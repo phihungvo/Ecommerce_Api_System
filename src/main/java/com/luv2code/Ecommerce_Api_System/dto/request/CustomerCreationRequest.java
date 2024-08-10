@@ -1,5 +1,6 @@
 package com.luv2code.Ecommerce_Api_System.dto.request;
 
+import com.luv2code.Ecommerce_Api_System.entity.Address;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -8,6 +9,8 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @Builder
@@ -25,12 +28,10 @@ public class CustomerCreationRequest {
     String lastName;
 
     @NotNull(message = "Please enter the mobile number")
-    @Column(unique = true)
-    @Pattern(regexp = "[6789]{1}[0-9]{9}", message = "Enter valid 10 digit mobile number")
+    @Pattern(regexp = "^(03|05|07|08|09)[0-9]{8}$", message = "Enter a valid 10-digit mobile number starting with 03, 05, 07, 08, or 09")
     String mobileNo;
 
     @NotNull(message = "Please enter the mobile number")
-    @Column(unique = true)
     @Email
     String emailId;
 
@@ -39,4 +40,6 @@ public class CustomerCreationRequest {
     String password;
 
     LocalDateTime createdOn = LocalDateTime.now();
+
+    Map<String, Address> address;
 }

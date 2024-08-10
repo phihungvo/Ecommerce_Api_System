@@ -4,6 +4,7 @@ import com.luv2code.Ecommerce_Api_System.dto.request.CustomerCreationRequest;
 import com.luv2code.Ecommerce_Api_System.dto.request.CustomerUpdateRequest;
 import com.luv2code.Ecommerce_Api_System.dto.response.CustomerCreationResponse;
 import com.luv2code.Ecommerce_Api_System.dto.response.CustomerUpdateResponse;
+import com.luv2code.Ecommerce_Api_System.entity.Address;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface CustomerService {
     public CustomerUpdateResponse updateCustomer(String customerId, CustomerUpdateRequest request);
 
     public void deleteCustomer(String customerId);
+
+
 }

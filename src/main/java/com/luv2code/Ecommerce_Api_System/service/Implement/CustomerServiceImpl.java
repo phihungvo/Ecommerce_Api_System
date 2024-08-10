@@ -4,12 +4,15 @@ import com.luv2code.Ecommerce_Api_System.dto.request.CustomerCreationRequest;
 import com.luv2code.Ecommerce_Api_System.dto.request.CustomerUpdateRequest;
 import com.luv2code.Ecommerce_Api_System.dto.response.CustomerCreationResponse;
 import com.luv2code.Ecommerce_Api_System.dto.response.CustomerUpdateResponse;
+import com.luv2code.Ecommerce_Api_System.entity.Address;
 import com.luv2code.Ecommerce_Api_System.entity.Customer;
 import com.luv2code.Ecommerce_Api_System.exception.CustomerException;
 import com.luv2code.Ecommerce_Api_System.exception.ErrorCode;
 import com.luv2code.Ecommerce_Api_System.mapper.CustomerMapper;
+import com.luv2code.Ecommerce_Api_System.repository.AddressRepository;
 import com.luv2code.Ecommerce_Api_System.repository.CustomerRepository;
 import com.luv2code.Ecommerce_Api_System.service.CustomerService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,6 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Transactional
     @Override
     public CustomerCreationResponse createCustomer(CustomerCreationRequest request) {
         boolean customerExisted = customerRepository.existsByEmailId(request.getEmailId());

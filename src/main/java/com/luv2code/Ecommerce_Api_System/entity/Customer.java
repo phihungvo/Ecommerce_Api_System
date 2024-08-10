@@ -27,8 +27,10 @@ public class Customer {
 
     String lastName;
 
+    @Column(unique = true)
     String mobileNo;
 
+    @Column(unique = true)
     String emailId;
 
     String password;

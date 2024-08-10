@@ -3,9 +3,13 @@ package com.luv2code.Ecommerce_Api_System.dto.response;
 import com.luv2code.Ecommerce_Api_System.entity.Address;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Builder
@@ -26,5 +30,5 @@ public class CustomerCreationResponse {
 
     LocalDateTime createdOn;
 
-    List<Address> addressList;
+    Map<String, Address> address;
 }

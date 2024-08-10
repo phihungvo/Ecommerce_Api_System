@@ -6,6 +6,7 @@ import com.luv2code.Ecommerce_Api_System.dto.response.CustomerCreationResponse;
 import com.luv2code.Ecommerce_Api_System.dto.response.CustomerUpdateResponse;
 import com.luv2code.Ecommerce_Api_System.entity.Customer;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
 import java.util.List;
