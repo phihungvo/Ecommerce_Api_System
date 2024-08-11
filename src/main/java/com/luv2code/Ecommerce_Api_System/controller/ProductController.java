@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,10 +22,9 @@ public class ProductController {
     ProductService productService;
 
     @PostMapping
-    public ApiResponse<ProductCreationResponse> createProduct(@Valid @RequestBody ProductCreationRequest request){
-        return ApiResponse.<ProductCreationResponse>builder()
-                .result(productService.createProduct(request))
-                .build();
+    public ResponseEntity<ProductCreationResponse> createProduct(@Valid @RequestBody ProductCreationRequest request) {
+        ProductCreationResponse response = productService.createProduct(request);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping()

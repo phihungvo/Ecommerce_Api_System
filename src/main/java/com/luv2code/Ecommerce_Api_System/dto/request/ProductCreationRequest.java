@@ -1,6 +1,10 @@
 package com.luv2code.Ecommerce_Api_System.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.luv2code.Ecommerce_Api_System.entity.Address;
+import com.luv2code.Ecommerce_Api_System.entity.Seller;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -31,4 +35,5 @@ public class ProductCreationRequest {
     @NotNull
     @Min(value = 0)
     private Integer quantity;
+
 }

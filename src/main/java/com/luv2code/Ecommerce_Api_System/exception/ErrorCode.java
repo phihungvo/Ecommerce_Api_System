@@ -16,7 +16,9 @@ public enum ErrorCode {
     USER_NOT_EXISTED(1001, "User not existed", HttpStatus.NOT_FOUND),
     INVALID_VALUE(1002, "", HttpStatus.BAD_REQUEST),
     PRODUCT_NOT_FOUND(1003, "Product not found", HttpStatus.NOT_FOUND),
-    PRODUCT_EXISTED(1004, "Product existed", HttpStatus.BAD_REQUEST)
+    PRODUCT_EXISTED(1004, "Product existed", HttpStatus.BAD_REQUEST),
+    SELLER_EXISTED(1005, "Seller existed", HttpStatus.BAD_REQUEST),
+    SELLER_NOT_FOUND(1006, "Seller not found", HttpStatus.NOT_FOUND),
     ;
 
 

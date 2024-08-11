@@ -14,6 +14,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
+
     Product toProduct(ProductCreationRequest request);
 
     ProductCreationResponse toProductResponse(Product product);
@@ -21,6 +22,5 @@ public interface ProductMapper {
     List<ProductCreationResponse> toProductCreationResponseList(List<Product> productList);
 
     void updateProduct(@MappingTarget Product product, ProductCreationRequest request);
-
 
 }

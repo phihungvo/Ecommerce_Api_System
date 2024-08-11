@@ -24,10 +24,11 @@ public class ProductServerImpl implements ProductService {
 
     ProductMapper productMapper;
 
+
+
     @Override
     public ProductCreationResponse createProduct(ProductCreationRequest request) {
-        var isExisted = productRepository.existsByProductName(request.getProductName());
-        if(isExisted){
+        if (productRepository.existsByProductName(request.getProductName())) {
             throw new ProductException(ErrorCode.PRODUCT_EXISTED);
         }
 
@@ -51,10 +52,11 @@ public class ProductServerImpl implements ProductService {
         return productMapper.toProductResponse(product);
     }
 
+
     @Override
     public ProductCreationResponse updateProduct(String productId, ProductCreationRequest request) {
         Product product = productRepository.findById(productId)
-                .orElseThrow(()-> new ProductException(ErrorCode.USER_NOT_EXISTED));
+                .orElseThrow(() -> new ProductException(ErrorCode.USER_NOT_EXISTED));  // Lỗi ở đây, nên dùng ERROR_CODE_PRODUCT_NOT_FOUND
 
         if(productRepository.existsByProductName(request.getProductName())){
             throw new ProductException(ErrorCode.PRODUCT_EXISTED);
@@ -63,6 +65,19 @@ public class ProductServerImpl implements ProductService {
 
         return productMapper.toProductResponse(productRepository.save(product));
     }
+
+//    @Override
+//    public ProductCreationResponse updateProduct(String productId, ProductCreationRequest request) {
+//        Product product = productRepository.findById(productId)
+//                .orElseThrow(()-> new ProductException(ErrorCode.USER_NOT_EXISTED));
+//
+//        if(productRepository.existsByProductName(request.getProductName())){
+//            throw new ProductException(ErrorCode.PRODUCT_EXISTED);
+//        }
+//        productMapper.updateProduct(product, request);
+//
+//        return productMapper.toProductResponse(productRepository.save(product));
+//    }
 
     @Override
     public void deleteProduct(String productId) {

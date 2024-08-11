@@ -1,10 +1,7 @@
 package com.luv2code.Ecommerce_Api_System.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -17,21 +14,20 @@ import lombok.experimental.FieldDefaults;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String productId;
+    String productId;
 
-    private String productName;
+    String productName;
 
-    private Double price;
+    Double price;
 
-    private String description;
+    String description;
 
-    private String manufacturer;
+    String manufacturer;
 
-    private Integer quantity;
+    Integer quantity;
 
-//    @Enumerated(EnumType.STRING)
-//    private CategoryEnum category;
-//
-//    @Enumerated(EnumType.STRING)
-//    private ProductStatus status;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    Seller seller;
+
 }

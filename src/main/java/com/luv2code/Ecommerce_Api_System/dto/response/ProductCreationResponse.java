@@ -1,5 +1,6 @@
 package com.luv2code.Ecommerce_Api_System.dto.response;
 
+import com.luv2code.Ecommerce_Api_System.entity.Seller;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -23,4 +24,5 @@ public class ProductCreationResponse {
     private String manufacturer;
 
     private Integer quantity;
+
 }
